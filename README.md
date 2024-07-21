@@ -3,6 +3,14 @@
 
 We help you procastinate your tasks more efficiently.
 
+[Visit us](https://procastimate.netlify.app/)
+
+## Donations
+
+To Donate: [click here](https://procastimate.netlify.app/donate)
+
+Help others delay their duties
+
 ## Installation
 
 Prerequisites:
@@ -26,4 +34,12 @@ npm run dev
 
     **NOTE**: Make the pull request message short and concise **PLEASE**.
 
-    Thank you!
+## Docker
+
+The image is located [here](https://hub.docker.com/repository/docker/jaarabytes/procastimate)
+
+Run this:
+```
+docker pull jaarabytes/procastimate:general
+```
+Thank you!
