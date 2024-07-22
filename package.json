@@ -26,6 +26,7 @@
 	"type": "module",
 	"dependencies": {
 		"dotenv": "^16.4.5",
+		"postgres": "^3.4.4",
 		"svelte-icons": "^2.1.0"
 	}
 }
