@@ -5,7 +5,7 @@
     import FaMailBulk from 'svelte-icons/fa/FaMailBulk.svelte'
 </script>
 
-<footer class="p-10 m-5 flex justify-between">
+<footer class="md:px-[20%] p-10 m-5 flex justify-between">
   <div class="">
     <p class="text-gray-700">© 2024 ProcastiMate.</p>
   </div>

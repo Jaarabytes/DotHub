@@ -23,7 +23,7 @@
     },
     {
       "question": "How can I provide feedback?",
-      "answer": "We appreciate your feedback! You can send us an email at support@ourwebapp.com or use the feedback form on our website."
+      "answer": "We appreciate your feedback! You can send us an email at xh3rking96@gmail.com or use the feedback form on our website."
     }
   ]
 </script>
