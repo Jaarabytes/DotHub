@@ -58,7 +58,7 @@ const reviews = [
 
   <h2 class="font-bold text-center my-10 text-2xl">ProcastiMate is trusted all over Kenya and beyond</h2>
   <hr />
-  <div class="sm:flex sm:justify-center mt-10">
+  <div class="text-center mt-10">
     {#each reviews as review}
       <div class="mx-5 p-5">
         <p class="sm:text-lg text-xl ">{review.review}</p>
