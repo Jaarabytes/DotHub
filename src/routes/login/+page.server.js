@@ -1,12 +1,16 @@
-import sql from "$lib/utils/db";
 import { fail, redirect } from "@sveltejs/kit";
 import * as argon2 from "argon2";
+import sql from "$lib/utils/db";
+import { request } from "http";
 
+
+/** @type {import('./$types').Actions} */
 export const actions = {
-  default : async ({ request, cookies }) => {
-    const formData = await request.formData();
-    const email = formData.get('email');
-    const password = formData.get('password');
+  login : async ({ request, cookies }) => {
+    console.log(`Hey this func just started`)
+    const data = await request.formData();
+    const email = data.get('email');
+    const password = data.get('password');
 
     if ( !email || !password ) {
       return fail(400, {error: "Email and password are required"});
