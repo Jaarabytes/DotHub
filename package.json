@@ -32,7 +32,6 @@
 		"axios": "^1.7.2",
 		"dotenv": "^16.4.5",
 		"lucide-svelte": "^0.414.0",
-		"postgres": "^3.4.4",
-		"svelte-icons": "^2.1.0"
+		"postgres": "^3.4.4"
 	}
 }
