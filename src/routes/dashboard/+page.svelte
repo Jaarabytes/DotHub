@@ -32,7 +32,7 @@
 
 <main>
   <p class="text-xl font-bold">{greeting}</p>
-  <div class="flex">
+  <div class="md:flex">
     <Card title="Total tasks" value="0" />
     <Card title="Completed" value="0" />
     <Card title="Deleted" value="0" />
@@ -44,7 +44,7 @@
     <button class="text-white rounded-lg bg-violet-800 px-3 py-2">Add Task</button>
   </div>
 
-<div class="flex">
+<div class="md:flex">
   <div class="mr-5 w-full bg-gray-100 rounded-lg p-2">
     <h2 class="font-bold my-3 text-xl">Tasks to do:</h2>
     {#each tasks as task}

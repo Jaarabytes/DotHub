@@ -4,8 +4,7 @@
   import Footer from "$lib/components/Footer.svelte";
   import Pricing from "$lib/components/Pricing.svelte";
   import FaQs from "$lib/components/FAQs.svelte";
-  import FaSeedling from 'svelte-icons/fa/FaSeedling.svelte'
-
+  import { Bean } from "lucide-svelte";
 // create a count function that chooses a random number from 1-20
 
 const reviews = [
@@ -13,6 +12,11 @@ const reviews = [
 {name: "James, father of 2", review: `"Ironically, my productivity increased after using this app. Hihly recommend it"`},
 {name: "Herbert, Frontend developer at Streamwan technologies", review: `"Stress reduced, indeed procastination is key!"`}
 ]
+
+const trustedCustomers = () => {
+// generates a random number from 1 to 39 i think;
+return  Math.floor(100 * Math.random())
+}
 </script>
 
 <svelte:head>
@@ -30,10 +34,10 @@ const reviews = [
     <a href="/sign_up"><button class="rounded-lg m-3 text-xl px-5 py-3 bg-violet-800 text-white hover:bg-violet-600">
         Get ProcastiMate
         <div class="w-5 h-5 inline-block">
-            <FaSeedling /> 
+            <Bean /> 
         </div>
       </button></a>
-    <p class="text-xs"><span class="text-green-500 font-bold">$20 off</span> for the first 100 customers ( count left )</p>
+      <p class="text-xs"><span class="text-green-500 font-bold">$20 off</span> for the first 100 customers ( {trustedCustomers()} left )</p>
   </div>
 
   <div class="my-6">
