@@ -1,29 +1,10 @@
-<script lang="ts">
-  import Navbar from "$lib/components/Navbar.svelte";
-  import "../app.css"
-  import Footer from "$lib/components/Footer.svelte";
-  import Pricing from "$lib/components/Pricing.svelte";
-  import FaQs from "$lib/components/FAQs.svelte";
-  import { Bean } from "lucide-svelte";
-// create a count function that chooses a random number from 1-20
-
-const reviews = [
-{name: "Sarah, University Student", review: `"Mood and life improved. I can't say thank you enough!"`},
-{name: "James, father of 2", review: `"Ironically, my productivity increased after using this app. Hihly recommend it"`},
-{name: "Herbert, Frontend developer at Streamwan technologies", review: `"Stress reduced, indeed procastination is key!"`}
-]
-
-const trustedCustomers = () => {
-// generates a random number from 1 to 39 i think;
-return  Math.floor(100 * Math.random())
-}
+<script>
 </script>
 
 <svelte:head>
   <title>ProcastiMate</title>
 </svelte:head>
 
-<Navbar />
 <main>
   <div class="text-center my-10">
     <h1 class="lg:text-[50px] my-5 text-center text-[45px] font-extrabold ">Sweeten the NOW !</h1>
@@ -34,10 +15,8 @@ return  Math.floor(100 * Math.random())
     <a href="/sign_up"><button class="rounded-lg m-3 text-xl px-5 py-3 bg-violet-800 text-white hover:bg-violet-600">
         Get ProcastiMate
         <div class="w-5 h-5 inline-block">
-            <Bean /> 
         </div>
       </button></a>
-      <p class="text-xs"><span class="text-green-500 font-bold">$20 off</span> for the first 100 customers ( {trustedCustomers()} left )</p>
   </div>
 
   <div class="my-6">
@@ -63,14 +42,5 @@ return  Math.floor(100 * Math.random())
   <h2 class="font-bold text-center my-10 text-2xl">ProcastiMate is trusted all over Kenya and beyond</h2>
   <hr />
   <div class="text-center mt-10">
-    {#each reviews as review}
-      <div class="mx-5 p-5">
-        <p class="sm:text-lg text-xl ">{review.review}</p>
-        <h4 class="my-4">{review.name}</h4>
-      </div>
-    {/each}
   </div>
 </main>
-<Pricing />
-<FaQs />
-<Footer />

@@ -1,26 +1,29 @@
-# ProcastiMate
+# Dotfilia
 
+Get access to the best dotfiles and ocnfigurations across Github
 
-We help you procastinate your tasks more efficiently.
+[Visit us](https://dotfilia.vercel.app/)
 
-[Visit us](https://procastimate.netlify.app/)
+## How it works
+
+Dotfilia periodically indexes GitHub for dotfiles-related repositories, saves it in a SQLite database, and serves it.
 
 ## Donations
 
-To Donate: [click here](https://procastimate.netlify.app/donate)
+To Donate: [click here](https://dotfilia.netlify.app/donate)
 
-Help others delay their duties
+Help me. Thinking deserves rewards
 
 ## Installation
 
 Prerequisites:
-- Node and Npm installed
 - API Keys, described in the `.env.example` file
 
 Run the following commands:
 ```
-git clone git@github.com:Jaarabytes/pro-castination.git
-cd procastimate
+git clone git@github.com:Jaarabytes/dotfilia.git
+cd dotfilia
+mv .env.example .env
 npm install 
 npm run dev
 ```
@@ -32,14 +35,14 @@ npm run dev
 - Resolve the bug/ add the feature
 - Open for a pull request
 
-    **NOTE**: Make the pull request message short and concise **PLEASE**.
+**NOTE**: Make the pull request message short and concise **PLEASE**.
 
 ## Docker
 
-The image is located [here](https://hub.docker.com/repository/docker/jaarabytes/procastimate)
+The image is located [here](https://hub.docker.com/repository/docker/jaarabytes/dotfilia)
 
 Run this:
 ```
-docker pull jaarabytes/procastimate:general
+docker pull jaarabytes/dotfilia:general
 ```
 Thank you!

@@ -7,8 +7,7 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"seed": "node -r dotenv/config ./scripts/seed.js"
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
@@ -24,14 +23,5 @@
 		"typescript": "^5.0.0",
 		"vite": "^5.0.3"
 	},
-	"type": "module",
-	"dependencies": {
-		"@auth/core": "^0.34.1",
-		"@auth/sveltekit": "^1.4.1",
-		"argon2": "^0.40.3",
-		"axios": "^1.7.2",
-		"dotenv": "^16.4.5",
-		"lucide-svelte": "^0.414.0",
-		"postgres": "^3.4.4"
-	}
+	"type": "module"
 }
