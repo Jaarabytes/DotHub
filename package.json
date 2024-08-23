@@ -25,6 +25,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"better-sqlite3": "^11.2.1",
 		"lucide-svelte": "^0.429.0"
 	}
 }
