@@ -4,6 +4,8 @@ Get access to the best dotfiles and configurations across Github
 
 [Visit us](https://DotHub.vercel.app/)
 
+[![Welcome to the rice field MF](https://nocamels.com/wp-content/uploads/2022/12/a-1-1024x576.jpg)](https://www.youtube.com/watch?v=RuofJYG2yak)
+
 ## Donations
 
 To Donate: [click here](https://DotHub.vercel.app/donate)
@@ -34,6 +36,11 @@ npm install
 npm run dev
 ```
 
+If you feel like seeding the database again. 
+```
+chmod +x seed.sh && bash seed.sh
+```
+
 ## Contributions
 
 - Fork the repository
@@ -55,6 +62,5 @@ Thank you!
 
 ## TODO
 
-- Add welcome to the rice field mf to the readme
-- Add welcome to the rice field mf to the readme
-- Add welcome to the rice field mf to the readme
+- ~Add welcome to the rice field mf to the readme
+- Add gitlab, codeberg and more github repositories to the db

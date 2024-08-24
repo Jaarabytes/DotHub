@@ -1,46 +1,70 @@
 <script>
-  // implement pagination
-  // github isssues, select field should be added (users select their specific requirements and db is filtered through it)
-  // also, help page to install all configs (link this to a button that says i don't know)
-  // my repo & dotfiles should be pinned (alongside github issues)
-  import { Github } from 'lucide-svelte';
+  import { Github } from "lucide-svelte"
 
-  const repos = [{
-    owner: "lewagon",
-    github_url: "https://github.com/lewagon/dotfiles",
-    description: "Default configuration for Le Wagon's students",
-    stars: 20365,
-    last_updated: "2024-08-22T11:20:42Z",
-    tech_stack: ["zsh", "tmux", "nvim"]
-  },
-  {
-    owner: "lewagon",
-    github_url: "https://github.com/lewagon/dotfiles",
-    description: "Default configuration for Le Wagon's students",
-    stars: 20365,
-    last_updated: "2024-08-22T11:20:42Z",
-    tech_stack: ["zsh", "tmux", "nvim"]
-  }]
+  export let data;
 
+  let projects = data.repositories;
+  let categories = [...new Set(projects.map(p => p.category))];
+  let selectedCategories = [];
+  let currentPage = 1;
+  let itemsPerPage = 15;
 
-  /**
-   * 81930 -> 81.9k
-   * 1000 -> 1.0k
-   * 999 -> 999
-   *
-   * @param {number} num - The number to format.
-   * @returns {string} - Formatted number as a string.
-   */
-  const formatNumberK = (num) => {
-    if (num < 1000) return num.toString();
-    const thousands = num / 1000;
-    return (Math.floor(thousands * 10) / 10).toFixed(1) + "k";
-  };
+  $: filteredProjects = selectedCategories.length === 0
+    ? projects
+    : projects.filter(p => selectedCategories.includes(p.category));
 
-  /**
-   * @param {number} unixSecond
-   * @returns {string} - Human-readable time difference.
-   */
+  $: paginatedProjects = filteredProjects.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  $: totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
+
+  function toggleCategory(category) {
+    selectedCategories = selectedCategories.includes(category)
+      ? selectedCategories.filter(c => c !== category)
+      : [...selectedCategories, category];
+    currentPage = 1; // Reset to first page when changing filters
+  }
+
+  export let totalProjects;
+  export let totalPages;
+  export let currentPage;
+  export let projects;
+
+  function goToPage(page) {
+    const searchParams = new URLSearchParams(window.location.search);
+    searchParams.set('page', page);
+    window.location.search = searchParams.toString();
+  }
+
+// implement pagination
+function nextPage() {
+  if (currentPage < totalPages) currentPage++;
+}
+
+function prevPage() {
+  if (currentPage > 1) currentPage--;
+}
+
+/**
+ * 81930 -> 81.9k
+ * 1000 -> 1.0k
+ * 999 -> 999
+ *
+ * @param {number} num - The number to format.
+ * @returns {string} - Formatted number as a string.
+ */
+const formatNumberK = (num) => {
+  if (num < 1000) return num.toString();
+  const thousands = num / 1000;
+  return (Math.floor(thousands * 10) / 10).toFixed(1) + "k";
+};
+
+/**
+ * @param {number} unixSecond
+ * @returns {string} - Human-readable time difference.
+ */
 const timeAgo = (unixSecond) => {
   const moment = (new Date()).getTime() / 1000;
   const diff = moment - unixSecond;
@@ -61,126 +85,95 @@ const timeAgo = (unixSecond) => {
   return "just now";
 };
 
+// might use it in the future
+let darkMode = false;
+function toggleDarkMode() {
+  darkMode = !darkMode;
+  if (darkMode) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+}
 </script>
 
 <svelte:head>
-  <title>Dotfilia</title>
+  <title>DotHub</title>
 </svelte:head>
 
- <header class="sticky top-0 z-10 bg-white/40 dark:bg-stone-900/40 backdrop-blur-xl">
-    <div class="max-w-5xl mx-auto p-3 flex items-center justify-between">
-      <a
-        href="/"
-        class="text-lg font-bold text-stone-900 dark:text-stone-100 tracking-tighter"
+<main class="bg-gray-100 dark:bg-gray-900 min-h-screen transition-colors duration-300">
+  <header class="bg-blue-600 dark:bg-blue-800 text-white py-4 transition-colors duration-300">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <a href="https://dothub.vercel.app" target="_blank" ><h1 class="text-3xl font-bold">DotHub</h1></a>
+      <a href='https://github.com/jaarabytes/dothub' target="_blank">
+      <button 
+        class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
       >
-        DotHub
+        <Github class="h-4 w-4 inline"/>
+      </button>
       </a>
+    </div>
+  </header>
 
-      <div>
-        <a
-          href="https://github.com/jaarabytes/dothub"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center space-x-1 py-1 px-2 text-xs font-medium text-stone-500 dark:text-stone-400 border border-stone-300 dark:border-stone-600 rounded-md hover:bg-stone-100 dark:hover:bg-stone-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-stone-500 transition-colors"
-        >
-          <Github />
-          <span>Star</span>
-        </a>
+  <div class="container mx-auto px-4 py-8">
+    <h2 class="text-stone-500 dark:text-stone-400">
+      DotHub is a place to find, sort and steal the best dotfiles you can get. Make your system look and feel better !
+    </h2>
+    <div class="mb-6">
+      <h2 class="text-lg font-medium text-gray-700 dark:text-gray-300 mb-2">Filter by categories (total repositories : {totalProjects}):</h2>
+      <div class="flex flex-wrap gap-2">
+        {#each categories as category}
+          <button
+            on:click={() => toggleCategory(category)}
+            class="px-3 py-1 rounded-full text-sm font-medium
+                   {selectedCategories.includes(category)
+                     ? 'bg-blue-500 text-white'
+                     : 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300'}
+                   hover:bg-blue-600 hover:text-white transition-colors duration-300"
+          >
+            {category}
+          </button>
+        {/each}
       </div>
     </div>
-</header>
 
-
-<section class="flex flex-col px-3 py-8 space-y-2 text-pretty md:text-center md:mx-auto md:max-w-[28rem]">
-  <h1 class="font-semibold tracking-tight text-3xl md:text-4xl text-stone-900 dark:text-stone-100">
-    Discover the best <span class="inline-block">dotfiles</span>
-  </h1>
-  <h2 class="text-stone-500 dark:text-stone-400">
-    DotHub is a place to find, sort and steal the best dotfiles you can get. Make your system look and feel better !
-  </h2>
-</section>
-
-<main>
-{#each repos as repo}
-<a
-      href={repo.github_url}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="bg-stone-50 dark:bg-stone-800 p-3 border border-stone-200 dark:border-stone-700 rounded-md flex flex-col block hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors"
-    >
-      <h3 class="font-semibold text-stone-900 dark:text-stone-100 mb-1 hover:underline break-words">
-        {repo.owner}
-      </h3>
-      {#if repo.description}
-        <p class="text-sm text-stone-700 dark:text-stone-300 mb-2 break-words">
-            {repo.description.length > 120
-            ? repo.description.slice(0, 120) + "..."
-            : repo.description}
-        </p>
-      {:else}
-        <p class="text-sm text-stone-700 dark:text-stone-300 mb-2 break-words">
-          No description provided
-        </p>
-      {/if}
-
-    <div class="grow" />
-      {#if repo.tech_stack}
-        <div class="flex flex-wrap gap-1 items-center">
-            <span class="text-sm text-stone-500 dark:text-stone-400">
-                Stack:
-            </span>
-            {#each repo.tech_stack.slice(0, 5) as stack}
-                <span class="p-0.5 bg-[#eeedec] text-stone-500 dark:bg-[#363230] dark:text-stone-400 rounded-sm text-xs inline-block">
-                    {stack}
-                </span>
-            {/each}
-            {#if repo.tech_stack.length > 5}
-                <span class="flex text-sm text-stone-500 dark:text-stone-400 grow">
-                    <div class="grow flex flex-col pr-3">
-                        <div class="h-1/2 border-b border-stone-200 dark:border-stone-700" />
-                        <div class="h-1/2 border-t border-stone-200 dark:border-stone-700" />
-                    </div>
-                    +{repo.tech_stack.length - 5} more
-                </span>
-            {/if}
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {#each paginatedProjects as project}
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+          <h2 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">{project.owner}</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
+          <span class="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full">
+            formatNumberK({project.stars})
+          </span>
         </div>
-      {/if}
+      {/each}
+    </div>
 
-        <div class="flex">
-          <span class="text-sm text-stone-500 dark:text-stone-400">Stars</span>
-            <div class="grow flex flex-col px-3">
-              <div class="h-1/2 border-b border-stone-200 dark:border-stone-700" />
-              <div class="h-1/2 border-t border-stone-200 dark:border-stone-700" />
-            </div>
-          <span class="text-sm text-stone-500 dark:text-stone-400">{formatNumberK(repo.stars)}</span>
-        </div>
-
-        <div class="flex">
-          <span class="text-sm text-stone-500 dark:text-stone-400">Last Commit</span>
-            <div class="grow flex flex-col px-3">
-              <div class="h-1/2 border-b border-stone-200 dark:border-stone-700" />
-              <div class="h-1/2 border-t border-stone-200 dark:border-stone-700" />
-            </div>
-          <span class="text-sm text-stone-500 dark:text-stone-400">{timeAgo(Number(repo.last_updated))}</span>
-        </div>
-    </a>
-{/each}
-</main>
-
-<footer class="flex max-w-5xl mx-auto px-3 mb-6 space-x-4 items-center">
-  <div class="grow flex flex-col">
-    <div class="h-1/2 border-b border-stone-100 dark:border-stone-800" />
-    <div class="h-1/2 border-t border-stone-100 dark:border-stone-800" />
+    <div class="mt-8 flex justify-between items-center">
+      <button
+        on:click={prevPage}
+        disabled={currentPage === 1}
+        class="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Previous
+      </button>
+      <span class="text-gray-700 dark:text-gray-300">
+        Page {currentPage} of {totalPages}
+      </span>
+      <button
+        on:click={nextPage}
+        disabled={currentPage === totalPages}
+        class="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Next
+      </button>
+    </div>
   </div>
-  <p class="text-stone-400 dark:text-stone-500 text-sm">
-    dotHub by 
-    <a
-      target="_blank"
-      rel="noopener noreferrer"
-      href="https://x.com/jaarabytes"
-      class="hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
-    >
-      @jaarabytes
-    </a>
-  </p>
-</footer>
+
+  <footer class="bg-gray-200 dark:bg-gray-800 py-4 mt-8 transition-colors duration-300">
+    <div class="container mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
+      Dothub by
+      <a href="https://x.com/jaarabytes" target="_blank">@jaarabytes</a>
+    </div>
+  </footer>
+</main>
