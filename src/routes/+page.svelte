@@ -15,15 +15,6 @@ const totalRepositories = data.totalRepositories;
 let currentPage = data.currentPage || 1;
 const dotfiles = data.dotfiles;
 
-const itemsPerPage = 30;
-
-// this should be like ?page=2 and so forth
-
-$: paginatedRepositories = data.repositories.slice(
-  (currentPage - 1) * itemsPerPage,
-  currentPage * itemsPerPage
-);
-
 function goToPage(page) {
   const searchParams = new URLSearchParams(window.location.search);
   searchParams.set('page', page);
@@ -90,7 +81,7 @@ function toggleDarkMode() {
 <main class="bg-gray-100 dark:bg-gray-900 min-h-screen transition-colors duration-300">
   <header class="bg-blue-600 dark:bg-blue-800 text-white py-4 transition-colors duration-300">
     <div class="container mx-auto px-4 flex justify-between items-center">
-      <a href="https://dothub.vercel.app" target="_blank" ><h1 class="text-3xl font-bold">DotHub</h1></a>
+      <a href="https://dothub.vercel.app" target="_blank" ><h1 class="text-3xl font-bold">Dot<span class="bg-gray-800 rounded-lg px-2">Hub</span></h1></a>
       <a href='https://github.com/jaarabytes/dothub' target="_blank">
       <button 
         class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
@@ -122,10 +113,19 @@ function toggleDarkMode() {
         </div>
       </div>
 
+
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {#each paginatedRepositories as repository}
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-          <h2 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">{repository.owner}</h2>
+      {#each repositories as repository}
+     <a
+        href={repository.github_url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="transition-colors bg-white dark:bg-gray-800 opacity-[.80] hover:opacity-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+        >
+        <div>
+          <a href={repository.github_url} class='hover:underline text-white' target="_blank">
+            <h2 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">{repository.owner}</h2>
+          </a>
           <p class="text-gray-600 dark:text-gray-400 mb-4">{repository.description}</p>
           <span class="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full">
             ⭐ {formatNumberK(repository.stars)}
@@ -134,12 +134,13 @@ function toggleDarkMode() {
             {timeAgo(repository.last_updated)}
           </span>
         </div>
+      </a>
       {/each}
     </div>
 
     <div class="mt-8 flex justify-between items-center">
       <button
-        on:click={goToPage(currentPage - 1)}
+        on:click={() => goToPage(currentPage - 1)}
         disabled={currentPage <= 1}
         class="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50 disabled:cursor-not-allowed"
       >
@@ -149,7 +150,7 @@ function toggleDarkMode() {
         Page {currentPage} of {totalPages}
       </span>
       <button
-        on:click={goToPage(currentPage + 1)}
+        on:click={() => goToPage(currentPage + 1)}
         disabled={currentPage === totalPages}
         class="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50 disabled:cursor-not-allowed"
       >
