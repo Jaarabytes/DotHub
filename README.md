@@ -18,9 +18,16 @@ Help me. Thinking deserves rewards
 
 First, install [gh](https://github.com/cli/cli) to query and use the [Github API](https://docs.github.com/en/rest/quickstart?apiVersion=2022-11-28). Also, install jq
 
-`repos.json` - `gh api "search/repositories?q=dotfiles+in:name" --paginate --jq '.items[] | {name: .name, html_url: .html_url, description: .description, stars: .stargazers_url, last_updated: .updated_at}' | jq -s "." > repos.json`
+repos.json 
+```
+gh api "search/repositories?q=dotfiles+in:name&per_page=1000&page=2" --jq '.items[] | {name: .owner.login, html_url: .html_url, description: .description, stars: .stargazers_count, last_updated: .updated_at}' | jq -s "." > repos.json
+```
 
-`urls.txt` - `jq '.[] | .html_url' repos.json`
+urls.txt
+
+```
+jq '.[] | .html_url' repos.json > urls.txt
+```
 
 ## Installation
 
@@ -62,5 +69,6 @@ Thank you!
 
 ## TODO
 
-- ~Add welcome to the rice field mf to the readme
-- Add gitlab, codeberg and more github repositories to the db
+- ~Add welcome to the rice field mf to the readme~
+- Add more github repositories to the db (search based on repository description)
+- Add codeberg repositories

@@ -1,50 +1,33 @@
 <script>
-  import { Github } from "lucide-svelte"
+import { Github } from "lucide-svelte"
 
-  export let data;
+export let data; // This should contain all data passed from `+page.server.js`export let data;
 
-  let projects = data.repositories;
-  let categories = [...new Set(projects.map(p => p.category))];
-  let selectedCategories = [];
-  let currentPage = 1;
-  let itemsPerPage = 15;
+console.log(`Repositories are`, data.repositories);
+console.log(`Total Repositories are`, data.totalRepositories);
+console.log(`Total Pages are`, data.totalPages);
+console.log(`Current Page is`, data.currentPage);
+console.log(`Dotfiles frontend are: `, data.dotfiles);
 
-  $: filteredProjects = selectedCategories.length === 0
-    ? projects
-    : projects.filter(p => selectedCategories.includes(p.category));
+const repositories = data.repositories;
+const totalPages = data.totalPages;
+const totalRepositories = data.totalRepositories;
+let currentPage = data.currentPage || 1;
+const dotfiles = data.dotfiles;
 
-  $: paginatedProjects = filteredProjects.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+const itemsPerPage = 30;
 
-  $: totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
+// this should be like ?page=2 and so forth
 
-  function toggleCategory(category) {
-    selectedCategories = selectedCategories.includes(category)
-      ? selectedCategories.filter(c => c !== category)
-      : [...selectedCategories, category];
-    currentPage = 1; // Reset to first page when changing filters
-  }
+$: paginatedRepositories = data.repositories.slice(
+  (currentPage - 1) * itemsPerPage,
+  currentPage * itemsPerPage
+);
 
-  export let totalProjects;
-  export let totalPages;
-  export let currentPage;
-  export let projects;
-
-  function goToPage(page) {
-    const searchParams = new URLSearchParams(window.location.search);
-    searchParams.set('page', page);
-    window.location.search = searchParams.toString();
-  }
-
-// implement pagination
-function nextPage() {
-  if (currentPage < totalPages) currentPage++;
-}
-
-function prevPage() {
-  if (currentPage > 1) currentPage--;
+function goToPage(page) {
+  const searchParams = new URLSearchParams(window.location.search);
+  searchParams.set('page', page);
+  window.location.search = searchParams.toString();
 }
 
 /**
@@ -62,12 +45,14 @@ const formatNumberK = (num) => {
 };
 
 /**
- * @param {number} unixSecond
+ * @param {string} dateString
  * @returns {string} - Human-readable time difference.
  */
-const timeAgo = (unixSecond) => {
-  const moment = (new Date()).getTime() / 1000;
-  const diff = moment - unixSecond;
+const timeAgo = (dateString) => {
+  const targetDate = new Date(dateString);
+  const targetUnixSecond = targetDate.getTime() / 1000;
+  const currentUnixSecond = (new Date()).getTime() / 1000;
+  const diff = currentUnixSecond - targetUnixSecond;
   const intervals = [
     { label: "yr", seconds: 31536000 },
     { label: "wk", seconds: 604800 },
@@ -84,6 +69,7 @@ const timeAgo = (unixSecond) => {
   }
   return "just now";
 };
+
 
 // might use it in the future
 let darkMode = false;
@@ -107,43 +93,45 @@ function toggleDarkMode() {
       <a href="https://dothub.vercel.app" target="_blank" ><h1 class="text-3xl font-bold">DotHub</h1></a>
       <a href='https://github.com/jaarabytes/dothub' target="_blank">
       <button 
-        class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
+        class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
       >
-        <Github class="h-4 w-4 inline"/>
+        <Github class="h-4 w-4 inline"/> Star
       </button>
       </a>
     </div>
   </header>
 
-  <div class="container mx-auto px-4 py-8">
-    <h2 class="text-stone-500 dark:text-stone-400">
-      DotHub is a place to find, sort and steal the best dotfiles you can get. Make your system look and feel better !
-    </h2>
-    <div class="mb-6">
-      <h2 class="text-lg font-medium text-gray-700 dark:text-gray-300 mb-2">Filter by categories (total repositories : {totalProjects}):</h2>
-      <div class="flex flex-wrap gap-2">
-        {#each categories as category}
-          <button
-            on:click={() => toggleCategory(category)}
-            class="px-3 py-1 rounded-full text-sm font-medium
-                   {selectedCategories.includes(category)
-                     ? 'bg-blue-500 text-white'
-                     : 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300'}
-                   hover:bg-blue-600 hover:text-white transition-colors duration-300"
-          >
-            {category}
-          </button>
-        {/each}
+    <div class="container mx-auto px-4 py-8">
+      <h2 class="text-stone-500 dark:text-stone-400">
+        DotHub is a place to find, sort and steal the best dotfiles you can get. Make your system look and feel better !
+      </h2>
+      <div class="mb-6">
+        <h2 class="font-medium text-stone-500 dark:text-stone-400 mb-2">Filter by categories (total repositories : {totalRepositories}):</h2>
+        <div class="flex flex-wrap gap-2">
+          {#each dotfiles as dotfile}
+            <button
+              class="px-3 py-1 rounded-full text-sm font-medium
+                     {dotfile
+                       ? 'bg-blue-500 text-white'
+                       : 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300'}
+                     hover:bg-blue-600 hover:text-white transition-colors duration-300"
+            >
+              {dotfile.name}
+            </button>
+          {/each}
+        </div>
       </div>
-    </div>
 
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {#each paginatedProjects as project}
+      {#each paginatedRepositories as repository}
         <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-          <h2 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">{project.owner}</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
+          <h2 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">{repository.owner}</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">{repository.description}</p>
           <span class="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full">
-            formatNumberK({project.stars})
+            ⭐ {formatNumberK(repository.stars)}
+          </span>
+          <span class="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full">
+            {timeAgo(repository.last_updated)}
           </span>
         </div>
       {/each}
@@ -151,8 +139,8 @@ function toggleDarkMode() {
 
     <div class="mt-8 flex justify-between items-center">
       <button
-        on:click={prevPage}
-        disabled={currentPage === 1}
+        on:click={goToPage(currentPage - 1)}
+        disabled={currentPage <= 1}
         class="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Previous
@@ -161,7 +149,7 @@ function toggleDarkMode() {
         Page {currentPage} of {totalPages}
       </span>
       <button
-        on:click={nextPage}
+        on:click={goToPage(currentPage + 1)}
         disabled={currentPage === totalPages}
         class="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50 disabled:cursor-not-allowed"
       >
