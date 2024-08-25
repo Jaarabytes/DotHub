@@ -15,6 +15,14 @@ const totalRepositories = data.totalRepositories;
 let currentPage = data.currentPage || 1;
 const dotfiles = data.dotfiles;
 
+let selectedDotfiles = [];
+console.log(`selected Dotfiles include ${selectedDotfiles}`);
+
+function toggleDotfiles(dotfile) {
+  selectedDotfiles = selectedDotfiles.includes(dotfile)
+    ? selectedDotfiles.filter(d => d !== dotfile)
+    : [...selectedDotfiles, dotfile];
+}
 function goToPage(page) {
   const searchParams = new URLSearchParams(window.location.search);
   searchParams.set('page', page);
@@ -101,8 +109,9 @@ function toggleDarkMode() {
         <div class="flex flex-wrap gap-2">
           {#each dotfiles as dotfile}
             <button
+              on:click={() => toggleDotfiles(dotfile.name)}
               class="px-3 py-1 rounded-full text-sm font-medium
-                     {dotfile
+                     {selectedDotfiles.includes(dotfile.name)
                        ? 'bg-blue-500 text-white'
                        : 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300'}
                      hover:bg-blue-600 hover:text-white transition-colors duration-300"
