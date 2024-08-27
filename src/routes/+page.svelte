@@ -1,29 +1,26 @@
-<script>
+<script lang="ts">
 import { Github } from "lucide-svelte"
+import { goto } from "$app/navigation";
+import { page } from "$app/stores";
+import { loading } from '$lib/stores';
+import { onDestroy } from 'svelte';
 
-export let data; // This should contain all data passed from `+page.server.js`export let data;
+export let data;
 
-console.log(`Repositories are`, data.repositories);
-console.log(`Total Repositories are`, data.totalRepositories);
-console.log(`Total Pages are`, data.totalPages);
-console.log(`Current Page is`, data.currentPage);
-console.log(`Dotfiles frontend are: `, data.dotfiles);
+const { repositories, totalPages, totalRepositories } = data;
+let currentPage = data.currentPage
+let dotfiles = $page.data.dotfiles;
+let selectedDotfiles:string[] = [];
 
-const repositories = data.repositories;
-const totalPages = data.totalPages;
-const totalRepositories = data.totalRepositories;
-let currentPage = data.currentPage || 1;
-const dotfiles = data.dotfiles;
+$loading = 'loading';
 
-let selectedDotfiles = [];
-console.log(`selected Dotfiles include ${selectedDotfiles}`);
-
-function toggleDotfiles(dotfile) {
+function toggleDotfiles(dotfile: string) {
   selectedDotfiles = selectedDotfiles.includes(dotfile)
     ? selectedDotfiles.filter(d => d !== dotfile)
     : [...selectedDotfiles, dotfile];
 }
-function goToPage(page) {
+
+function goToPage(page: string) {
   const searchParams = new URLSearchParams(window.location.search);
   searchParams.set('page', page);
   window.location.search = searchParams.toString();
@@ -37,7 +34,7 @@ function goToPage(page) {
  * @param {number} num - The number to format.
  * @returns {string} - Formatted number as a string.
  */
-const formatNumberK = (num) => {
+function formatNumberK (num: number) {
   if (num < 1000) return num.toString();
   const thousands = num / 1000;
   return (Math.floor(thousands * 10) / 10).toFixed(1) + "k";
@@ -47,7 +44,7 @@ const formatNumberK = (num) => {
  * @param {string} dateString
  * @returns {string} - Human-readable time difference.
  */
-const timeAgo = (dateString) => {
+function timeAgo (dateString: string) {
   const targetDate = new Date(dateString);
   const targetUnixSecond = targetDate.getTime() / 1000;
   const currentUnixSecond = (new Date()).getTime() / 1000;
@@ -69,17 +66,30 @@ const timeAgo = (dateString) => {
   return "just now";
 };
 
-
-// might use it in the future
-let darkMode = false;
-function toggleDarkMode() {
-  darkMode = !darkMode;
-  if (darkMode) {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.remove('dark');
-  }
+function getDotfiles () {
+  const params = new URLSearchParams();
+  selectedDotfiles.forEach(dotfile => params.append('dotfiles', dotfile));
+  goto(`?${params.toString()}`).then(() => location.reload());
 }
+
+const timeOutDuration = 5000;
+
+// Set up a timeout to display a timeout message
+const timeout = setTimeout(() => {
+  $loading = 'timeout';
+}, timeOutDuration);
+
+// Clear the timeout when the component is destroyed
+onDestroy(() => {
+  clearTimeout(timeout);
+});
+
+// Watch for data to be loaded
+$: if (data) {
+  clearTimeout(timeout);
+  $loading = 'loaded';
+}
+
 </script>
 
 <svelte:head>
@@ -120,22 +130,31 @@ function toggleDarkMode() {
             </button>
           {/each}
         </div>
-      </div>
+        <button 
+          class="text-white px-4 py-2 my-5 bg-blue-500 text-white rounded disabled:opacity-50 disabled:cursor-not-allowed"
+          on:click={getDotfiles}>Get em
+        </button>
+        </div>
 
 
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {#if loading == 'loading'}
+      <div>Loading...</div>
+    {:else if $loading == 'timeout'}
+      <div>Timed out while loading data. Please refresh the page.</div>
+    {:else}
       {#each repositories as repository}
      <a
-        href={repository.github_url}
+        href={repository.url}
         target="_blank"
         rel="noopener noreferrer"
-        class="transition-colors bg-white dark:bg-gray-800 opacity-[.80] hover:opacity-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+        class="transition-colors bg-white dark:bg-gray-800 opacity-[.75] hover:opacity-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
         >
         <div>
-          <a href={repository.github_url} class='hover:underline text-white' target="_blank">
+          <a href={repository.url} class='hover:underline text-white' target="_blank">
             <h2 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">{repository.owner}</h2>
           </a>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">{repository.description}</p>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">{repository.description === 'null' ? 'No description provided' : repository.description}</p>
           <span class="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full">
             ⭐ {formatNumberK(repository.stars)}
           </span>
@@ -145,6 +164,7 @@ function toggleDarkMode() {
         </div>
       </a>
       {/each}
+    {/if}
     </div>
 
     <div class="mt-8 flex justify-between items-center">

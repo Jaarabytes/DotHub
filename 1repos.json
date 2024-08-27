@@ -7210,424 +7210,424 @@
     "owner": "bbkane"
   },
   {
+    "url": "https://codeberg.org/rui/.doom.d",
     "last_updated": "2022-09-05T13:00:30Z",
     "stars": 1,
     "owner": "rui",
-    "description": "My personal doom Emacs configuration ",
-    "html_url": "https://codeberg.org/rui/.doom.d"
+    "description": "My personal doom Emacs configuration "
   },
   {
+    "url": "https://codeberg.org/xdrd/.dotfiles",
     "last_updated": "2022-07-05T20:02:55Z",
     "stars": 0,
     "owner": "xdrd",
-    "description": "My arch linux dotfiles",
-    "html_url": "https://codeberg.org/xdrd/.dotfiles"
+    "description": "My arch linux dotfiles"
   },
   {
+    "url": "https://codeberg.org/pseudoparenchymatous/.dotfiles",
     "last_updated": "2024-05-24T11:08:46Z",
     "stars": 2,
     "owner": "pseudoparenchymatous",
-    "description": "My D😳TFILES",
-    "html_url": "https://codeberg.org/pseudoparenchymatous/.dotfiles"
+    "description": "My D😳TFILES"
   },
   {
+    "url": "https://codeberg.org/foxy/.dotfiles",
     "last_updated": "2024-08-23T15:39:10Z",
     "stars": 1,
     "owner": "foxy",
-    "description": "Ricing, dotfiles, wallpapers and more from my current setups.",
-    "html_url": "https://codeberg.org/foxy/.dotfiles"
+    "description": "Ricing, dotfiles, wallpapers and more from my current setups."
   },
   {
+    "url": "https://codeberg.org/BeronTheColossus/.dotfiles",
     "last_updated": "2024-07-14T14:03:37Z",
     "stars": 0,
     "owner": "BeronTheColossus",
-    "description": "My .dotfiles for my Arch Linux system",
-    "html_url": "https://codeberg.org/BeronTheColossus/.dotfiles"
+    "description": "My .dotfiles for my Arch Linux system"
   },
   {
+    "url": "https://codeberg.org/IamPyu/.dotfiles",
     "last_updated": "2024-08-18T15:07:31Z",
     "stars": 2,
     "owner": "IamPyu",
-    "description": "Linux Dotfiles",
-    "html_url": "https://codeberg.org/IamPyu/.dotfiles"
+    "description": "Linux Dotfiles"
   },
   {
+    "url": "https://codeberg.org/eax/.dots",
     "last_updated": "2024-08-11T08:32:35Z",
     "stars": 0,
     "owner": "eax",
-    "description": "the new dotfiles",
-    "html_url": "https://codeberg.org/eax/.dots"
+    "description": "the new dotfiles"
   },
   {
+    "url": "https://codeberg.org/Euro2017/.files",
     "last_updated": "2024-08-01T20:50:25Z",
     "stars": 0,
     "owner": "Euro2017",
-    "description": "Dotfiles are cool",
-    "html_url": "https://codeberg.org/Euro2017/.files"
+    "description": "Dotfiles are cool"
   },
   {
+    "url": "https://codeberg.org/ohmyberg/.lapdots",
     "last_updated": "2022-12-27T01:57:33Z",
     "stars": 1,
     "owner": "ohmyberg",
-    "description": "Dotfiles, but this time it's on my lap.",
-    "html_url": "https://codeberg.org/ohmyberg/.lapdots"
+    "description": "Dotfiles, but this time it's on my lap."
   },
   {
+    "url": "https://codeberg.org/arslee07/.s",
     "last_updated": "2023-02-06T08:36:46Z",
     "stars": 0,
     "owner": "arslee07",
-    "description": "dotfiles",
-    "html_url": "https://codeberg.org/arslee07/.s"
+    "description": "dotfiles"
   },
   {
+    "url": "https://codeberg.org/333voidgirl/333voidMachine",
     "last_updated": "2024-07-30T07:54:22Z",
     "stars": 0,
     "owner": "333voidgirl",
-    "description": "Dotfiles and various scripts. Also available on GitHub https://github.org/333voidgirl/333voidMachine",
-    "html_url": "https://codeberg.org/333voidgirl/333voidMachine"
+    "description": "Dotfiles and various scripts. Also available on GitHub https://github.org/333voidgirl/333voidMachine"
   },
   {
+    "url": "https://codeberg.org/dotdmt/AlpineSetup",
     "last_updated": "2021-11-24T21:34:15Z",
     "stars": 0,
     "owner": "dotdmt",
-    "description": "Shell scripts and other files to speed up the setup of Alpine Linux.",
-    "html_url": "https://codeberg.org/dotdmt/AlpineSetup"
+    "description": "Shell scripts and other files to speed up the setup of Alpine Linux."
   },
   {
+    "url": "https://codeberg.org/alan2b7/ansible-dotfiles",
     "last_updated": "2024-08-22T06:50:25Z",
     "stars": 0,
     "owner": "alan2b7",
-    "description": "",
-    "html_url": "https://codeberg.org/alan2b7/ansible-dotfiles"
+    "description": ""
   },
   {
+    "url": "https://codeberg.org/AntwortEinesLebens/AntwortEinesLebens",
     "last_updated": "2024-08-04T16:08:55Z",
     "stars": 0,
     "owner": "AntwortEinesLebens",
-    "description": "My development environment explained",
-    "html_url": "https://codeberg.org/AntwortEinesLebens/AntwortEinesLebens"
+    "description": "My development environment explained"
   },
   {
+    "url": "https://codeberg.org/Moskas/arch-dotfiles",
     "last_updated": "2023-05-14T17:27:21Z",
     "stars": 0,
     "owner": "Moskas",
-    "description": "My personal dotfiles for my qtile arch setup.",
-    "html_url": "https://codeberg.org/Moskas/arch-dotfiles"
+    "description": "My personal dotfiles for my qtile arch setup."
   },
   {
+    "url": "https://codeberg.org/Tournesol/Arch-Gnome",
     "last_updated": "2024-08-18T06:16:12Z",
     "stars": 0,
     "owner": "Tournesol",
-    "description": "Arch dotfiles using gnome | powered by yadm",
-    "html_url": "https://codeberg.org/Tournesol/Arch-Gnome"
+    "description": "Arch dotfiles using gnome | powered by yadm"
   },
   {
+    "url": "https://codeberg.org/codingotaku/arch-post-install",
     "last_updated": "2023-05-07T19:05:27Z",
     "stars": 0,
     "owner": "codingotaku",
-    "description": "A Post-install script for base Arch Linux installation to use with my dotfiles.",
-    "html_url": "https://codeberg.org/codingotaku/arch-post-install"
+    "description": "A Post-install script for base Arch Linux installation to use with my dotfiles."
   },
   {
+    "url": "https://codeberg.org/bricked/archdots",
     "last_updated": "2024-04-06T16:58:37Z",
     "stars": 0,
     "owner": "bricked",
-    "description": "Dotfiles for Hyprland on Arch btw.",
-    "html_url": "https://codeberg.org/bricked/archdots"
+    "description": "Dotfiles for Hyprland on Arch btw."
   },
   {
+    "url": "https://codeberg.org/hg/archrice",
     "last_updated": "2021-12-03T17:40:57Z",
     "stars": 0,
     "owner": "hg",
-    "description": "This repository contains my personal dotfiles. They are stored here for convenience so that I may quickly access them on new machines or new installs. Also, others may find some of my configurations helpful in customizing their own dotfiles.",
-    "html_url": "https://codeberg.org/hg/archrice"
+    "description": "This repository contains my personal dotfiles. They are stored here for convenience so that I may quickly access them on new machines or new installs. Also, others may find some of my configurations helpful in customizing their own dotfiles."
   },
   {
+    "url": "https://codeberg.org/vhs/archuro",
     "last_updated": "2022-07-31T21:49:07Z",
     "stars": 0,
     "owner": "vhs",
-    "description": "💾 Run Arch Linux in Docker on macOS",
-    "html_url": "https://codeberg.org/vhs/archuro"
+    "description": "💾 Run Arch Linux in Docker on macOS"
   },
   {
+    "url": "https://codeberg.org/hidayry/awesomewm-dotfiles",
     "last_updated": "2024-01-14T16:59:26Z",
     "stars": 1,
     "owner": "hidayry",
-    "description": "dotfiles awesomewm",
-    "html_url": "https://codeberg.org/hidayry/awesomewm-dotfiles"
+    "description": "dotfiles awesomewm"
   },
   {
+    "url": "https://codeberg.org/ThomasHighbaugh/base16-vice-scheme",
     "last_updated": "2023-07-08T04:40:43Z",
     "stars": 0,
     "owner": "ThomasHighbaugh",
-    "description": "My very own base16 colorscheme... because yes I am that sort of a perfectionist",
-    "html_url": "https://codeberg.org/ThomasHighbaugh/base16-vice-scheme"
+    "description": "My very own base16 colorscheme... because yes I am that sort of a perfectionist"
   },
   {
+    "url": "https://codeberg.org/mel/bootstrap",
     "last_updated": "2024-08-22T14:14:36Z",
     "stars": 0,
     "owner": "mel",
-    "description": "my personal dotfiles & terminal config settings",
-    "html_url": "https://codeberg.org/mel/bootstrap"
+    "description": "my personal dotfiles & terminal config settings"
   },
   {
+    "url": "https://codeberg.org/vinymeuh/chezmoi",
     "last_updated": "2024-06-07T09:19:05Z",
     "stars": 0,
     "owner": "vinymeuh",
-    "description": "My dotfiles managed using chezmoi ",
-    "html_url": "https://codeberg.org/vinymeuh/chezmoi"
+    "description": "My dotfiles managed using chezmoi "
   },
   {
+    "url": "https://codeberg.org/hrcerq/conf",
     "last_updated": "2024-05-19T22:31:18Z",
     "stars": 0,
     "owner": "hrcerq",
-    "description": "Meus arquivos de configuração (my conf files)",
-    "html_url": "https://codeberg.org/hrcerq/conf"
+    "description": "Meus arquivos de configuração (my conf files)"
   },
   {
+    "url": "https://codeberg.org/zvava/config",
     "last_updated": "2024-04-13T04:58:07Z",
     "stars": 0,
     "owner": "zvava",
-    "description": "⚙ my config/dot files (mirrored from https://git.zvava.org/zvava/config)",
-    "html_url": "https://codeberg.org/zvava/config"
+    "description": "⚙ my config/dot files (mirrored from https://git.zvava.org/zvava/config)"
   },
   {
+    "url": "https://codeberg.org/distinctdipole/config",
     "last_updated": "2024-08-13T16:02:15Z",
     "stars": 0,
     "owner": "distinctdipole",
-    "description": "Local dotfiles from ~/.config",
-    "html_url": "https://codeberg.org/distinctdipole/config"
+    "description": "Local dotfiles from ~/.config"
   },
   {
+    "url": "https://codeberg.org/b34n5/Config",
     "last_updated": "2024-08-09T15:31:35Z",
     "stars": 0,
     "owner": "b34n5",
-    "description": "- Archivos de configuración para GNU/Linux.\r\n- Algunos scripts útiles.",
-    "html_url": "https://codeberg.org/b34n5/Config"
+    "description": "- Archivos de configuración para GNU/Linux.\r\n- Algunos scripts útiles."
   },
   {
+    "url": "https://codeberg.org/AkhIL/config-efm-langserver",
     "last_updated": "2024-07-14T02:37:52Z",
     "stars": 0,
     "owner": "AkhIL",
-    "description": "Configuration file for efm-langserver (https://github.com/mattn/efm-langserver/)",
-    "html_url": "https://codeberg.org/AkhIL/config-efm-langserver"
+    "description": "Configuration file for efm-langserver (https://github.com/mattn/efm-langserver/)"
   },
   {
+    "url": "https://codeberg.org/AkhIL/config-fish",
     "last_updated": "2024-07-10T06:05:01Z",
     "stars": 0,
     "owner": "AkhIL",
-    "description": "Configuration files for Fish shell",
-    "html_url": "https://codeberg.org/AkhIL/config-fish"
+    "description": "Configuration files for Fish shell"
   },
   {
+    "url": "https://codeberg.org/rui/.doom.d",
     "last_updated": "2022-09-05T13:00:30Z",
     "stars": 1,
     "owner": "rui",
-    "description": "My personal doom Emacs configuration ",
-    "html_url": "https://codeberg.org/rui/.doom.d"
+    "description": "My personal doom Emacs configuration "
   },
   {
+    "url": "https://codeberg.org/xdrd/.dotfiles",
     "last_updated": "2022-07-05T20:02:55Z",
     "stars": 0,
     "owner": "xdrd",
-    "description": "My arch linux dotfiles",
-    "html_url": "https://codeberg.org/xdrd/.dotfiles"
+    "description": "My arch linux dotfiles"
   },
   {
+    "url": "https://codeberg.org/pseudoparenchymatous/.dotfiles",
     "last_updated": "2024-05-24T11:08:46Z",
     "stars": 2,
     "owner": "pseudoparenchymatous",
-    "description": "My D😳TFILES",
-    "html_url": "https://codeberg.org/pseudoparenchymatous/.dotfiles"
+    "description": "My D😳TFILES"
   },
   {
+    "url": "https://codeberg.org/foxy/.dotfiles",
     "last_updated": "2024-08-23T15:39:10Z",
     "stars": 1,
     "owner": "foxy",
-    "description": "Ricing, dotfiles, wallpapers and more from my current setups.",
-    "html_url": "https://codeberg.org/foxy/.dotfiles"
+    "description": "Ricing, dotfiles, wallpapers and more from my current setups."
   },
   {
+    "url": "https://codeberg.org/BeronTheColossus/.dotfiles",
     "last_updated": "2024-07-14T14:03:37Z",
     "stars": 0,
     "owner": "BeronTheColossus",
-    "description": "My .dotfiles for my Arch Linux system",
-    "html_url": "https://codeberg.org/BeronTheColossus/.dotfiles"
+    "description": "My .dotfiles for my Arch Linux system"
   },
   {
+    "url": "https://codeberg.org/IamPyu/.dotfiles",
     "last_updated": "2024-08-18T15:07:31Z",
     "stars": 2,
     "owner": "IamPyu",
-    "description": "Linux Dotfiles",
-    "html_url": "https://codeberg.org/IamPyu/.dotfiles"
+    "description": "Linux Dotfiles"
   },
   {
+    "url": "https://codeberg.org/eax/.dots",
     "last_updated": "2024-08-11T08:32:35Z",
     "stars": 0,
     "owner": "eax",
-    "description": "the new dotfiles",
-    "html_url": "https://codeberg.org/eax/.dots"
+    "description": "the new dotfiles"
   },
   {
+    "url": "https://codeberg.org/Euro2017/.files",
     "last_updated": "2024-08-01T20:50:25Z",
     "stars": 0,
     "owner": "Euro2017",
-    "description": "Dotfiles are cool",
-    "html_url": "https://codeberg.org/Euro2017/.files"
+    "description": "Dotfiles are cool"
   },
   {
+    "url": "https://codeberg.org/ohmyberg/.lapdots",
     "last_updated": "2022-12-27T01:57:33Z",
     "stars": 1,
     "owner": "ohmyberg",
-    "description": "Dotfiles, but this time it's on my lap.",
-    "html_url": "https://codeberg.org/ohmyberg/.lapdots"
+    "description": "Dotfiles, but this time it's on my lap."
   },
   {
+    "url": "https://codeberg.org/arslee07/.s",
     "last_updated": "2023-02-06T08:36:46Z",
     "stars": 0,
     "owner": "arslee07",
-    "description": "dotfiles",
-    "html_url": "https://codeberg.org/arslee07/.s"
+    "description": "dotfiles"
   },
   {
+    "url": "https://codeberg.org/333voidgirl/333voidMachine",
     "last_updated": "2024-07-30T07:54:22Z",
     "stars": 0,
     "owner": "333voidgirl",
-    "description": "Dotfiles and various scripts. Also available on GitHub https://github.org/333voidgirl/333voidMachine",
-    "html_url": "https://codeberg.org/333voidgirl/333voidMachine"
+    "description": "Dotfiles and various scripts. Also available on GitHub https://github.org/333voidgirl/333voidMachine"
   },
   {
+    "url": "https://codeberg.org/dotdmt/AlpineSetup",
     "last_updated": "2021-11-24T21:34:15Z",
     "stars": 0,
     "owner": "dotdmt",
-    "description": "Shell scripts and other files to speed up the setup of Alpine Linux.",
-    "html_url": "https://codeberg.org/dotdmt/AlpineSetup"
+    "description": "Shell scripts and other files to speed up the setup of Alpine Linux."
   },
   {
+    "url": "https://codeberg.org/alan2b7/ansible-dotfiles",
     "last_updated": "2024-08-22T06:50:25Z",
     "stars": 0,
     "owner": "alan2b7",
-    "description": "",
-    "html_url": "https://codeberg.org/alan2b7/ansible-dotfiles"
+    "description": ""
   },
   {
+    "url": "https://codeberg.org/AntwortEinesLebens/AntwortEinesLebens",
     "last_updated": "2024-08-04T16:08:55Z",
     "stars": 0,
     "owner": "AntwortEinesLebens",
-    "description": "My development environment explained",
-    "html_url": "https://codeberg.org/AntwortEinesLebens/AntwortEinesLebens"
+    "description": "My development environment explained"
   },
   {
+    "url": "https://codeberg.org/Moskas/arch-dotfiles",
     "last_updated": "2023-05-14T17:27:21Z",
     "stars": 0,
     "owner": "Moskas",
-    "description": "My personal dotfiles for my qtile arch setup.",
-    "html_url": "https://codeberg.org/Moskas/arch-dotfiles"
+    "description": "My personal dotfiles for my qtile arch setup."
   },
   {
+    "url": "https://codeberg.org/Tournesol/Arch-Gnome",
     "last_updated": "2024-08-18T06:16:12Z",
     "stars": 0,
     "owner": "Tournesol",
-    "description": "Arch dotfiles using gnome | powered by yadm",
-    "html_url": "https://codeberg.org/Tournesol/Arch-Gnome"
+    "description": "Arch dotfiles using gnome | powered by yadm"
   },
   {
+    "url": "https://codeberg.org/codingotaku/arch-post-install",
     "last_updated": "2023-05-07T19:05:27Z",
     "stars": 0,
     "owner": "codingotaku",
-    "description": "A Post-install script for base Arch Linux installation to use with my dotfiles.",
-    "html_url": "https://codeberg.org/codingotaku/arch-post-install"
+    "description": "A Post-install script for base Arch Linux installation to use with my dotfiles."
   },
   {
+    "url": "https://codeberg.org/bricked/archdots",
     "last_updated": "2024-04-06T16:58:37Z",
     "stars": 0,
     "owner": "bricked",
-    "description": "Dotfiles for Hyprland on Arch btw.",
-    "html_url": "https://codeberg.org/bricked/archdots"
+    "description": "Dotfiles for Hyprland on Arch btw."
   },
   {
+    "url": "https://codeberg.org/hg/archrice",
     "last_updated": "2021-12-03T17:40:57Z",
     "stars": 0,
     "owner": "hg",
-    "description": "This repository contains my personal dotfiles. They are stored here for convenience so that I may quickly access them on new machines or new installs. Also, others may find some of my configurations helpful in customizing their own dotfiles.",
-    "html_url": "https://codeberg.org/hg/archrice"
+    "description": "This repository contains my personal dotfiles. They are stored here for convenience so that I may quickly access them on new machines or new installs. Also, others may find some of my configurations helpful in customizing their own dotfiles."
   },
   {
+    "url": "https://codeberg.org/vhs/archuro",
     "last_updated": "2022-07-31T21:49:07Z",
     "stars": 0,
     "owner": "vhs",
-    "description": "💾 Run Arch Linux in Docker on macOS",
-    "html_url": "https://codeberg.org/vhs/archuro"
+    "description": "💾 Run Arch Linux in Docker on macOS"
   },
   {
+    "url": "https://codeberg.org/hidayry/awesomewm-dotfiles",
     "last_updated": "2024-01-14T16:59:26Z",
     "stars": 1,
     "owner": "hidayry",
-    "description": "dotfiles awesomewm",
-    "html_url": "https://codeberg.org/hidayry/awesomewm-dotfiles"
+    "description": "dotfiles awesomewm"
   },
   {
+    "url": "https://codeberg.org/ThomasHighbaugh/base16-vice-scheme",
     "last_updated": "2023-07-08T04:40:43Z",
     "stars": 0,
     "owner": "ThomasHighbaugh",
-    "description": "My very own base16 colorscheme... because yes I am that sort of a perfectionist",
-    "html_url": "https://codeberg.org/ThomasHighbaugh/base16-vice-scheme"
+    "description": "My very own base16 colorscheme... because yes I am that sort of a perfectionist"
   },
   {
+    "url": "https://codeberg.org/mel/bootstrap",
     "last_updated": "2024-08-22T14:14:36Z",
     "stars": 0,
     "owner": "mel",
-    "description": "my personal dotfiles & terminal config settings",
-    "html_url": "https://codeberg.org/mel/bootstrap"
+    "description": "my personal dotfiles & terminal config settings"
   },
   {
+    "url": "https://codeberg.org/vinymeuh/chezmoi",
     "last_updated": "2024-06-07T09:19:05Z",
     "stars": 0,
     "owner": "vinymeuh",
-    "description": "My dotfiles managed using chezmoi ",
-    "html_url": "https://codeberg.org/vinymeuh/chezmoi"
+    "description": "My dotfiles managed using chezmoi "
   },
   {
+    "url": "https://codeberg.org/hrcerq/conf",
     "last_updated": "2024-05-19T22:31:18Z",
     "stars": 0,
     "owner": "hrcerq",
-    "description": "Meus arquivos de configuração (my conf files)",
-    "html_url": "https://codeberg.org/hrcerq/conf"
+    "description": "Meus arquivos de configuração (my conf files)"
   },
   {
+    "url": "https://codeberg.org/zvava/config",
     "last_updated": "2024-04-13T04:58:07Z",
     "stars": 0,
     "owner": "zvava",
-    "description": "⚙ my config/dot files (mirrored from https://git.zvava.org/zvava/config)",
-    "html_url": "https://codeberg.org/zvava/config"
+    "description": "⚙ my config/dot files (mirrored from https://git.zvava.org/zvava/config)"
   },
   {
+    "url": "https://codeberg.org/distinctdipole/config",
     "last_updated": "2024-08-13T16:02:15Z",
     "stars": 0,
     "owner": "distinctdipole",
-    "description": "Local dotfiles from ~/.config",
-    "html_url": "https://codeberg.org/distinctdipole/config"
+    "description": "Local dotfiles from ~/.config"
   },
   {
+    "url": "https://codeberg.org/b34n5/Config",
     "last_updated": "2024-08-09T15:31:35Z",
     "stars": 0,
     "owner": "b34n5",
-    "description": "- Archivos de configuración para GNU/Linux.\r\n- Algunos scripts útiles.",
-    "html_url": "https://codeberg.org/b34n5/Config"
+    "description": "- Archivos de configuración para GNU/Linux.\r\n- Algunos scripts útiles."
   },
   {
+    "url": "https://codeberg.org/AkhIL/config-efm-langserver",
     "last_updated": "2024-07-14T02:37:52Z",
     "stars": 0,
     "owner": "AkhIL",
-    "description": "Configuration file for efm-langserver (https://github.com/mattn/efm-langserver/)",
-    "html_url": "https://codeberg.org/AkhIL/config-efm-langserver"
+    "description": "Configuration file for efm-langserver (https://github.com/mattn/efm-langserver/)"
   },
   {
+    "url": "https://codeberg.org/AkhIL/config-fish",
     "last_updated": "2024-07-10T06:05:01Z",
     "stars": 0,
     "owner": "AkhIL",
-    "description": "Configuration files for Fish shell",
-    "html_url": "https://codeberg.org/AkhIL/config-fish"
+    "description": "Configuration files for Fish shell"
   },
   {
     "description": "",

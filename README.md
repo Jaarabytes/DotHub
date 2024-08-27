@@ -16,11 +16,13 @@ Help me. Thinking deserves rewards
 
 ## How ?
 
+The database already has repositories from github, gitlab and codeberg. If you however want to seed it again, i wrote a script for you, `seed.sh`.
+
 First, install [gh](https://github.com/cli/cli) to query and use the [Github API](https://docs.github.com/en/rest/quickstart?apiVersion=2022-11-28). Also, install jq
 
 repos.json 
 ```
-gh api "search/repositories?q=dotfiles+in:name&per_page=1000&page=2" --jq '.items[] | {name: .owner.login, html_url: .html_url, description: .description, stars: .stargazers_count, last_updated: .updated_at}' | jq -s "." > repos.json
+gh api "search/repositories?q=dotfiles+in:name" --jq '.items[] | {name: .owner.login, html_url: .html_url, description: .description, stars: .stargazers_count, last_updated: .updated_at}' | jq -s "." > repos.json
 ```
 
 urls.txt
@@ -38,7 +40,6 @@ Run the following commands:
 ```
 git clone git@github.com:Jaarabytes/DotHub.git
 cd DotHub
-mv .env.example .env
 npm install 
 npm run dev
 ```
@@ -71,4 +72,5 @@ Thank you!
 
 - ~Add welcome to the rice field mf to the readme~
 - Add more github repositories to the db (search based on repository description)
-- Add codeberg repositories
+- ~Add codeberg repositories~
+- ~Add gitlab repositories~
