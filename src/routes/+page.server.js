@@ -2,7 +2,7 @@ import Database from 'better-sqlite3';
 
 let db;
 try {
-  db = new Database('/home/trafalgar/todo/dotHub/dotHub.sqlite', { verbose: console.log });
+  db = new Database('./dotHub.sqlite', { verbose: console.log });
 } catch (error) {
   console.error('Error connecting to the database:', error.message);
   throw error;
