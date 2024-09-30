@@ -1,16 +1,17 @@
 #!/bin/bash
 
 # This should run as a cron job (every 30 minutes to update the webpage)
-db_file="dotHub.sqlite"
-json_file="repos.json"
+DATABASE_FILE="dotHub.sqlite"
+JSON_FILE="repos.json"
 
 # KRIETIV Thinking
+# I really am a genius
 escape_single_quotes() {
     echo "${1//\'/\'\'}"
 }
 
 create_tables() {
-  sqlite3 "$db_file" << EOF
+  sqlite3 "$DATABASE_FILE" << EOF
   CREATE TABLE IF NOT EXISTS repositories (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     url TEXT NOT NULL UNIQUE,
@@ -36,17 +37,16 @@ EOF
 }
 
 insert_repositories() {
-  jq -c '.[]' "$json_file" | while read -r repo; do
+  jq -c '.[]' "$JSON_FILE" | while read -r repo; do
     owner=$(jq -r '.owner' <<< "$repo")
     url=$(jq -r '.html_url' <<< "$repo")
     description=$(jq -r '.description' <<< "$repo")
     stars=$(jq -r '.stars' <<< "$repo")
     last_updated=$(jq -r '.last_updated' <<< "$repo")
 
-    # Escape single quotes in description
     escaped_description=$(escape_single_quotes "$description")
 
-    sqlite3 "$db_file" << EOF
+    sqlite3 "$DATABASE_FILE" << EOF
     INSERT OR REPLACE INTO repositories (owner, url, description, stars, last_updated) 
     VALUES ('$owner', '$url', '$escaped_description', $stars, '$last_updated');
 EOF
@@ -129,7 +129,7 @@ fi
     echo "Tech Stack for $repo_slashed_name: ${tech_stack[*]}"
     for stack in "${tech_stack[@]}"; do
       escaped_stack=$(escape_single_quotes "$stack")
-      sqlite3 "$db_file" << EOF
+      sqlite3 "$DATABASE_FILE" << EOF
       INSERT OR IGNORE INTO configurations (name) VALUES ('$escaped_stack');
       INSERT OR REPLACE INTO repository_configurations (repository_id, configuration_id)
       VALUES (
@@ -144,7 +144,7 @@ EOF
 create_tables
 insert_repositories
 
-jq -c '.[]' "$json_file" | while read -r json_line; do
+jq -c '.[]' "$JSON_FILE" | while read -r json_line; do
   # for gitlab, project id is used to check contents of a repository
   project_id=$(jq -r '.project_id' <<< "$json_line")
   repo_url=$(jq -r '.html_url' <<< "$json_line")

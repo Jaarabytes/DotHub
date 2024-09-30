@@ -1,52 +1,25 @@
 # DotHub
 
-Get access to the best dotfiles and configurations across Github
+Get access to the best dotfiles and configurations across Github, gitlab and codeberg
 
 [Visit us](https://DotHub.vercel.app/)
 
 [![Welcome to the rice field MF](https://nocamels.com/wp-content/uploads/2022/12/a-1-1024x576.jpg)](https://www.youtube.com/watch?v=RuofJYG2yak)
 
-## Donations
+![App itself](./Screenshot_20240919_104353.png)
 
-To Donate: [click here](https://DotHub.vercel.app/donate)
+Also, I'm on a tight budget so I can't host this. Bye!
 
-Help me. Thinking deserves rewards
 
 # Development
 
-## How ?
-
-The database already has repositories from github, gitlab and codeberg. If you however want to seed it again, i wrote a script for you, `seed.sh`.
-
-First, install [gh](https://github.com/cli/cli) to query and use the [Github API](https://docs.github.com/en/rest/quickstart?apiVersion=2022-11-28). Also, install jq
-
-repos.json 
-```
-gh api "search/repositories?q=dotfiles+in:name" --jq '.items[] | {name: .owner.login, html_url: .html_url, description: .description, stars: .stargazers_count, last_updated: .updated_at}' | jq -s "." > repos.json
-```
-
-urls.txt
-
-```
-jq '.[] | .html_url' repos.json > urls.txt
-```
-
 ## Installation
 
-Prerequisites:
-- API Keys, described in the `.env.example` file
-
+Clone the repository
 Run the following commands:
 ```
-git clone git@github.com:Jaarabytes/DotHub.git
-cd DotHub
-npm install 
+npm i 
 npm run dev
-```
-
-If you feel like seeding the database again. 
-```
-chmod +x seed.sh && bash seed.sh
 ```
 
 ## Contributions
@@ -58,19 +31,4 @@ chmod +x seed.sh && bash seed.sh
 
 **NOTE**: Make the pull request message short and concise **PLEASE**.
 
-## Docker
-
-The image is located [here](https://hub.docker.com/repository/docker/jaarabytes/DotHub)
-
-Run this:
-```
-docker pull jaarabytes/DotHub:general
-```
 Thank you!
-
-## TODO
-
-- ~Add welcome to the rice field mf to the readme~
-- Add more github repositories to the db (search based on repository description)
-- ~Add codeberg repositories~
-- ~Add gitlab repositories~
