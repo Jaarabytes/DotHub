@@ -1,18 +1,18 @@
 <script lang="ts">
+/*
+* TODO: Get rid of lucide-svelte , instead use svg directly you idiot
+* Add loading state, 500 error state, among others,
+*/
 import { Github } from "lucide-svelte"
 import { goto } from "$app/navigation";
 import { page } from "$app/stores";
-import { loading } from '$lib/stores';
-import { onDestroy } from 'svelte';
 
 export let data;
 
 const { repositories, totalPages, totalRepositories } = data;
-let currentPage = data.currentPage
+let currentPage: number = data.currentPage
 let dotfiles = $page.data.dotfiles;
 let selectedDotfiles:string[] = [];
-
-$loading = 'loading';
 
 function toggleDotfiles(dotfile: string) {
   selectedDotfiles = selectedDotfiles.includes(dotfile)
@@ -20,9 +20,9 @@ function toggleDotfiles(dotfile: string) {
     : [...selectedDotfiles, dotfile];
 }
 
-function goToPage(page: string) {
+function goToPage(page: number) {
   const searchParams = new URLSearchParams(window.location.search);
-  searchParams.set('page', page);
+  searchParams.set('page', page.toString());
   window.location.search = searchParams.toString();
 }
 
@@ -72,24 +72,6 @@ function getDotfiles () {
   goto(`?${params.toString()}`).then(() => location.reload());
 }
 
-const timeOutDuration = 5000;
-
-// Set up a timeout to display a timeout message
-const timeout = setTimeout(() => {
-  $loading = 'timeout';
-}, timeOutDuration);
-
-// Clear the timeout when the component is destroyed
-onDestroy(() => {
-  clearTimeout(timeout);
-});
-
-// Watch for data to be loaded
-$: if (data) {
-  clearTimeout(timeout);
-  $loading = 'loaded';
-}
-
 </script>
 
 <svelte:head>
@@ -99,7 +81,7 @@ $: if (data) {
 <main class="bg-gray-100 dark:bg-gray-900 min-h-screen transition-colors duration-300">
   <header class="bg-blue-600 dark:bg-blue-800 text-white py-4 transition-colors duration-300">
     <div class="container mx-auto px-4 flex justify-between items-center">
-      <a href="https://dothub.vercel.app" target="_blank" ><h1 class="text-3xl font-bold">Dot<span class="bg-gray-800 rounded-lg px-2">Hub</span></h1></a>
+      <a href="/" target="_blank" ><h1 class="text-3xl font-bold">Dot<span class="bg-gray-800 rounded-lg px-2">Hub</span></h1></a>
       <a href='https://github.com/jaarabytes/dothub' target="_blank">
       <button 
         class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
@@ -138,12 +120,7 @@ $: if (data) {
 
 
   <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-    {#if loading == 'loading'}
-      <div>Loading...</div>
-    {:else if $loading == 'timeout'}
-      <div>Timed out while loading data. Please refresh the page.</div>
-    {:else}
-      {#each repositories as repository}
+  {#each repositories as repository}
      <a
         href={repository.url}
         target="_blank"
@@ -164,7 +141,6 @@ $: if (data) {
         </div>
       </a>
       {/each}
-    {/if}
     </div>
 
     <div class="mt-8 flex justify-between items-center">

@@ -1,15 +1,22 @@
 #!/bin/bash
 
-# This should run as a cron job (every 30 minutes to update the webpage)
+# TODO: Add access token from gitlab
+#       Authenticate using github gh, look up a way for curl but using a github token
+#       Add another function that creates a new repos.json (More repos, the better), thus making this a cronjob
+
+GITLAB_ACCESS_TOKEN=""
+
+# Update this to a cron job that runs every 30 minutes to update the db
 DATABASE_FILE="dotHub.sqlite"
 JSON_FILE="repos.json"
 
-# KRIETIV Thinking
-# I really am a genius
+# WTF likes SQL Injections? Not me
 escape_single_quotes() {
     echo "${1//\'/\'\'}"
 }
 
+# Many to many relationship is involved thus the table schemas
+# Also, search by indexes/ id's is much faster
 create_tables() {
   sqlite3 "$DATABASE_FILE" << EOF
   CREATE TABLE IF NOT EXISTS repositories (
@@ -59,19 +66,15 @@ detect_tech_stack() {
   local tech_stack=()
   
 if [[ "$repo_url" == *github* ]]; then
-    echo "URL is from GitHub."
-    echo "Repo slashed name is $repo_slashed_name and full name is $repo_url."
     contents=$(gh api "repos/$repo_slashed_name/contents" | jq '.[].name')
     echo "Processing GitHub URL: $repo_slashed_name"
 
 elif [[ "$repo_url" == *gitlab* ]]; then
-    echo "URL is from GitLab."
-    contents=$(curl --header "PRIVATE-TOKEN: $ACCESS_TOKEN" \
+    contents=$(curl --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" \
         "https://gitlab.com/api/v4/projects/$repo_slashed_name/repository/tree" | jq '.[].name')
     echo "Processing GitLab URL: $repo_slashed_name"
 
 elif [[ "$repo_url" == *codeberg* ]]; then
-    echo "URL is from Codeberg."
     contents=$(curl -X 'GET' \
         "https://codeberg.org/api/v1/repos/$repo_slashed_name/contents" \
         -H 'accept: application/json' | jq '.[].name')
@@ -156,8 +159,5 @@ jq -c '.[]' "$JSON_FILE" | while read -r json_line; do
   elif [[ "$repo_url" == *gitlab* ]]; then
     repo_slashed_name=$(echo "$project_id")
   fi
-  echo "Processing $repo_slashed_name..."
-  echo "Repository name is $repo_url"
   detect_tech_stack "$repo_slashed_name" "$repo_url"
-  echo ""
 done 

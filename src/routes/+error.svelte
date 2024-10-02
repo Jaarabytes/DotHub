@@ -2,15 +2,16 @@
   import { page } from "$app/stores";
   import { onMount } from "svelte";
   import "../app.css"
-  // Fix this please
 
-  // yes, who doesn't love dogs
-  let dogImage = ''
+/**
+ * HTTP DOG 
+ * When web app encounters 401, 403, 404 or 500 error, specific dog images are displayed
+ */
+
+  let dogImage: string = ''
 
   onMount(() => {
-  if ( $page.status === 401 || $page.status === 404 || $page.status === 403 ||  $page.status === 500 ) {
-  // showcase the http dog whenever an error occurs, hell yeah
-
+  if ( $page.status === 401 || $page.status === 403 || $page.status === 404 ||  $page.status === 500 ) {
   dogImage = `https://http.dog/${$page.status}.jpg`
   }
   })
