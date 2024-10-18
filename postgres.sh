@@ -5,7 +5,7 @@
 GITLAB_ACCESS_TOKEN=""
 GITHUB_API_KEY=""
 CODEBERG_API_KEY=""
-POSTGRES_URL="postgres://default:9lH7FdQmGCSk@ep-shy-mode-a4rhg1m7.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require"
+POSTGRES_URL=""
 JSON_FILE="repos.json"
 BACKUP_DIR="db_backup"
 LOG_FILE="seed.log"
