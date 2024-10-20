@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# TODO: create a func which updates the repos.json file. 
+
 # Environment variables (consider moving these to a separate .env file)
 GITLAB_ACCESS_TOKEN=""
 GITHUB_API_KEY=""
@@ -166,6 +168,7 @@ backup_database() {
 }
 
 main() {
+  # Insert the Update json func here
     log_message "Starting seed script"
     install_dependencies
     create_tables
