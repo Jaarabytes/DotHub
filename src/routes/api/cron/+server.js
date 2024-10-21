@@ -1,7 +1,17 @@
 // Import required modules
 import { Octokit } from '@octokit/rest';
 import axios from 'axios';
-import { Pool } from 'pg';
+import pg from 'pg';
+import { env } from '$env/dynamic/private';
+
+const { Pool } = pg;
+const connectionString = env.PRIVATE_POSTGRES_URL
+const pool = new Pool({
+  connectionString: env.PRIVATE_POSTGRES_URL,
+})
+
+console.log(connectionString == undefined ? `Missing postgres connection URI` : `Postgres url is ${env.PRIVATE_POSTGRES_URL}`)
+
 
 // Environment variables (to be set in Vercel)
 const GITLAB_ACCESS_TOKEN = process.env.GITLAB_ACCESS_TOKEN;
@@ -11,13 +21,6 @@ const POSTGRES_URL = process.env.POSTGRES_URL;
 
 // Initialize Octokit for GitHub API
 const octokit = new Octokit({ auth: GITHUB_API_KEY });
-
-const pool = new Pool({
-  connectionString: POSTGRES_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
 
 const logMessage = (message) => {
   console.log(`${new Date().toISOString()} - ${message}`);
@@ -211,7 +214,8 @@ async function updateConfigurations(repoUrl, techStack) {
   }
 }
 
-export default async function handler(req, res) {
+// FInd a way to the default thing here
+export async function _handler(req) {
   try {
     logMessage("Starting cron job");
 
@@ -235,9 +239,9 @@ export default async function handler(req, res) {
     }
 
     logMessage("Cron job completed successfully");
-    res.status(200).json({ message: "Cron job completed successfully" });
+    return new Response("Cron job completed successfully");
   } catch (error) {
     logMessage(`Error in cron job: ${error.message}`);
-    res.status(500).json({ error: "Internal server error" });
+    return new Response("Internal server error");
   }
 }
