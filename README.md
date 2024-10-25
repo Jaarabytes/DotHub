@@ -4,7 +4,7 @@ Get access to the best dotfiles and configurations across Github, gitlab and cod
 
 [![Welcome to the rice field MF](https://nocamels.com/wp-content/uploads/2022/12/a-1-1024x576.jpg)](https://www.youtube.com/watch?v=RuofJYG2yak)
 
-![App itself](./Screenshot_20240919_104353.png)
+![App itself](Screenshot_20241025_091324.png)
 
 Also, I'm on a tight budget so I can't host this. Bye!
 
