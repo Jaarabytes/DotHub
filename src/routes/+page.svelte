@@ -8,6 +8,7 @@ const { repositories, totalPages, totalRepositories } = data;
 let currentPage: number = data.currentPage
 let dotfiles = $page.data.dotfiles;
 let selectedDotfiles:string[] = [];
+let displayedDotfiles:string[] = (dotfiles.map(elem => elem.name)).sort();
 
 function toggleDotfiles(dotfile: string) {
   selectedDotfiles = selectedDotfiles.includes(dotfile)
@@ -93,17 +94,18 @@ function getDotfiles () {
       </h2>
       <div class="mb-6">
         <h2 class="font-medium text-stone-500 dark:text-stone-400 mb-2">Filter by categories (total repositories : {totalRepositories}):</h2>
+        <h2 class="font-medium text-stone-500 dark:text-stone-400 mb-2">Selected dotfiles : {selectedDotfiles}</h2>
         <div class="flex flex-wrap gap-2">
-          {#each dotfiles as dotfile}
+          {#each displayedDotfiles as displayedDotfile}
             <button
-              on:click={() => toggleDotfiles(dotfile.name)}
+              on:click={() => toggleDotfiles(displayedDotfile)}
               class="px-3 py-1 rounded-full text-sm font-medium
-                     {selectedDotfiles.includes(dotfile.name)
+                     {selectedDotfiles.includes(displayedDotfile)
                        ? 'bg-blue-500 text-white'
                        : 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300'}
                      hover:bg-blue-600 hover:text-white transition-colors duration-300"
             >
-              {dotfile.name}
+              {displayedDotfile}
             </button>
           {/each}
         </div>
@@ -166,3 +168,4 @@ function getDotfiles () {
     </div>
   </footer>
 </main>
+
